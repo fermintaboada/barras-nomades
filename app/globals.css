@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Font variables (set by next/font on <html>) ───────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* To swap fonts: change which CSS var these point to in layout.tsx */
+  --font-display: var(--font-playfair);
+  --font-body:    var(--font-inter);
+
+  /* Brand palette */
+  --color-brand-blue:   #1E8FD5;
+  --color-brand-orange: #F26522;
+  --color-brand-dark:   #0F0F0F;
+  --color-brand-cream:  #F5F0E8;
+  --color-brand-muted:  #8A7E70;
+  --color-surface-1:    #161616;
+  --color-surface-2:    #1E1E1E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0F0F0F;
+  color: #F5F0E8;
+  font-family: var(--font-body, sans-serif);
 }
