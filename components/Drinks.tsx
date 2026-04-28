@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { DRINKS, BRANDS } from '@/lib/constants'
+import FadeIn from '@/components/ui/FadeIn'
 
 export default function Drinks() {
   return (
     <section className="bg-brand-dark py-16 sm:py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
+        <FadeIn from="up" className="text-center mb-16">
           <p className="text-brand-blue text-xs tracking-[0.25em] uppercase font-body mb-4">
             La carta
           </p>
@@ -14,11 +14,10 @@ export default function Drinks() {
             Tragos y marcas
           </h2>
           <div className="w-10 h-px bg-brand-orange mx-auto mt-6" />
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          {/* Drinks list */}
-          <div>
+          <FadeIn from="up" delay={100}>
             <h3 className="font-display text-xl text-brand-orange mb-6">
               Tragos
             </h3>
@@ -32,10 +31,9 @@ export default function Drinks() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
 
-          {/* Brands list */}
-          <div>
+          <FadeIn from="up" delay={220}>
             <h3 className="font-display text-xl text-brand-orange mb-6">
               Marcas estándar
             </h3>
@@ -49,10 +47,9 @@ export default function Drinks() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
 
-          {/* Photo */}
-          <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+          <FadeIn from="up" delay={340} className="relative aspect-[3/4] rounded-xl overflow-hidden">
             <Image
               src="/ingredientes.jpeg"
               alt="Ingredientes — Barras Nómades"
@@ -60,7 +57,7 @@ export default function Drinks() {
               className="object-cover brightness-[0.88] contrast-[1.05] saturate-[0.9]"
             />
             <div className="absolute inset-0 bg-black/20" />
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

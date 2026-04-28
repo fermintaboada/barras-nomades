@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { SERVICES } from '@/lib/constants'
+import FadeIn from '@/components/ui/FadeIn'
 
 export default function Services() {
   return (
     <section className="bg-surface-1 py-16 sm:py-24 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Photo */}
-        <div className="relative aspect-[4/3] rounded-xl overflow-hidden order-last lg:order-first">
+        <FadeIn from="left" delay={100} className="relative aspect-[4/3] rounded-xl overflow-hidden order-last lg:order-first">
           <Image
             src="/casamiento.jpeg"
             alt="Barras Nómades — servicio en evento"
@@ -14,10 +14,9 @@ export default function Services() {
             className="object-cover brightness-[0.88] contrast-[1.05] saturate-[0.9]"
           />
           <div className="absolute inset-0 bg-black/20" />
-        </div>
+        </FadeIn>
 
-        {/* Content */}
-        <div>
+        <FadeIn from="right">
           <p className="text-brand-blue text-xs tracking-[0.25em] uppercase font-body mb-4">
             ¿Qué incluye?
           </p>
@@ -51,7 +50,7 @@ export default function Services() {
               </li>
             ))}
           </ul>
-        </div>
+        </FadeIn>
       </div>
     </section>
   )

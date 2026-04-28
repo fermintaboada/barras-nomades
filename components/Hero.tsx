@@ -28,29 +28,43 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24">
-        <p className="text-brand-blue text-xs font-body tracking-[0.3em] uppercase mb-8 [text-shadow:0_1px_12px_rgba(0,0,0,0.9)]">
+        <p
+          className="hero-anim text-brand-blue text-xs font-body tracking-[0.3em] uppercase mb-8 [text-shadow:0_1px_12px_rgba(0,0,0,0.9)]"
+          style={{ animationDelay: '100ms' }}
+        >
           Servicio profesional de barra
         </p>
 
-        <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none mb-6 [text-shadow:0_2px_24px_rgba(0,0,0,0.9)]">
+        <h1
+          className="hero-anim font-display text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none mb-6 [text-shadow:0_2px_24px_rgba(0,0,0,0.9)]"
+          style={{ animationDelay: '300ms' }}
+        >
           Barras Nómades
         </h1>
 
-        <div className="w-16 h-px bg-brand-orange mx-auto mb-8" />
+        <div
+          className="hero-anim w-16 h-px bg-brand-orange mx-auto mb-8"
+          style={{ animationDelay: '500ms' }}
+        />
 
-        <p className="font-body text-lg sm:text-xl text-brand-cream max-w-lg mx-auto mb-12 [text-shadow:0_1px_16px_rgba(0,0,0,0.9)]">
+        <p
+          className="hero-anim font-body text-lg sm:text-xl text-brand-cream max-w-lg mx-auto mb-12 [text-shadow:0_1px_16px_rgba(0,0,0,0.9)]"
+          style={{ animationDelay: '650ms' }}
+        >
           20 años llevando el bar perfecto a tu evento
         </p>
 
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white font-body font-medium text-base px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95"
-        >
-          <WhatsAppIcon />
-          Consultanos por WhatsApp
-        </a>
+        <div className="hero-anim" style={{ animationDelay: '850ms' }}>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white font-body font-medium text-base px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95"
+          >
+            <WhatsAppIcon />
+            Consultanos por WhatsApp
+          </a>
+        </div>
       </div>
 
       {/* Scroll indicator */}
