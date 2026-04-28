@@ -1,3 +1,7 @@
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+
 export const WHATSAPP_LINK =
   'https://wa.me/5491160921908?text=Hola%20F%C3%A9lix%2C%20quiero%20consultar%20por%20el%20servicio%20de%20barra'
 

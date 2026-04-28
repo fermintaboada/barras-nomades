@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import { SITE_URL } from '@/lib/constants'
 import './globals.css'
 
-/*
-  ── Typography ────────────────────────────────────────────────
-  To swap fonts: change the import + variable name below.
-  The rest of the app uses font-display / font-body via Tailwind.
-*/
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
@@ -20,9 +17,60 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Barras Nómades — Bar para eventos',
+  metadataBase: new URL(SITE_URL),
+  title: 'Barras Nómades — Bar profesional para eventos en Buenos Aires',
   description:
-    '20 años llevando el bar perfecto a tu evento. Bodas, corporativos, fiestas privadas. Servicio llave en mano con staff incluido.',
+    '20 años llevando el bar perfecto a tu evento. Bodas, corporativos y fiestas privadas. Servicio llave en mano: barra, staff, insumos y logística incluidos.',
+  keywords: [
+    'barra de tragos para eventos',
+    'bartenders Buenos Aires',
+    'servicio de barra para bodas',
+    'bar para casamientos',
+    'coctelería para eventos',
+    'Barras Nómades',
+    'Félix Taboada bartender',
+  ],
+  authors: [{ name: 'Félix Taboada' }],
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: 'website',
+    locale: 'es_AR',
+    url: SITE_URL,
+    siteName: 'Barras Nómades',
+    title: 'Barras Nómades — Bar profesional para eventos',
+    description:
+      '20 años llevando el bar perfecto a tu evento. Bodas, corporativos y fiestas privadas. Servicio llave en mano incluido.',
+    images: [
+      {
+        url: '/nuevoHero.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Barras Nómades — Bar profesional para eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Barras Nómades — Bar profesional para eventos',
+    description:
+      '20 años llevando el bar perfecto a tu evento. Servicio llave en mano con staff incluido.',
+    images: ['/nuevoHero.jpeg'],
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Barras Nómades',
+  description:
+    'Servicio profesional de barra para eventos. Bodas, corporativos y fiestas privadas en Buenos Aires.',
+  url: SITE_URL,
+  telephone: '+5491160921908',
+  priceRange: '$$',
+  founder: { '@type': 'Person', name: 'Félix Taboada' },
+  sameAs: ['https://instagram.com/barrasnomades'],
+  areaServed: { '@type': 'City', name: 'Buenos Aires' },
+  serviceType: 'Bar service for events',
 }
 
 export default function RootLayout({
@@ -31,11 +79,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="es"
-      className={`${playfair.variable} ${inter.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
