@@ -32,11 +32,11 @@ export default function CTA() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-sm text-brand-cream/40 hover:text-brand-blue transition-colors"
+                className="font-body text-sm text-brand-cream/60 hover:text-brand-blue transition-colors"
               >
                 {INSTAGRAM_HANDLE}
               </a>
-              <span className="font-body text-xs text-brand-cream/25">
+              <span className="font-body text-xs text-brand-cream/40">
                 Félix Taboada
               </span>
             </div>

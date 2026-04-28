@@ -26,7 +26,7 @@ export default function ValueProp() {
                   {stat.unit}
                 </span>
               </div>
-              <span className="font-body text-xs tracking-widest text-brand-cream/50 uppercase mt-1">
+              <span className="font-body text-xs tracking-widest text-brand-cream/60 uppercase mt-1">
                 {stat.label}
               </span>
             </FadeIn>

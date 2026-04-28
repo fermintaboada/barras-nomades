@@ -40,21 +40,12 @@ export const metadata: Metadata = {
     title: 'Barras Nómades — Bar profesional para eventos',
     description:
       '20 años llevando el bar perfecto a tu evento. Bodas, corporativos y fiestas privadas. Servicio llave en mano incluido.',
-    images: [
-      {
-        url: '/nuevoHero.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Barras Nómades — Bar profesional para eventos',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Barras Nómades — Bar profesional para eventos',
     description:
       '20 años llevando el bar perfecto a tu evento. Servicio llave en mano con staff incluido.',
-    images: ['/nuevoHero.jpeg'],
   },
 }
 

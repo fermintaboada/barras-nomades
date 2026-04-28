@@ -67,8 +67,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+      {/* Scroll indicator — decorative */}
+      <div aria-hidden="true" className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
         <span className="font-body text-xs tracking-widest uppercase text-brand-cream">
           Scroll
         </span>
