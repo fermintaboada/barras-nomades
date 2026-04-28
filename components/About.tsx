@@ -27,6 +27,7 @@ export default function About() {
             src="/genteGold.jpeg"
             alt="Félix Taboada y equipo — Barras Nómades"
             fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover brightness-[0.88] contrast-[1.05] saturate-[0.9]"
           />
           <div className="absolute inset-0 bg-black/20" />

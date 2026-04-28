@@ -27,6 +27,7 @@ export default function Gallery() {
                 src={src}
                 alt={`Barras Nómades — foto ${i + 1}`}
                 fill
+                sizes="(min-width: 640px) 33vw, 50vw"
                 className="object-cover brightness-[0.88] contrast-[1.05] saturate-[0.9] group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/20" />

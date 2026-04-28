@@ -54,6 +54,7 @@ export default function Drinks() {
               src="/ingredientes.jpeg"
               alt="Ingredientes — Barras Nómades"
               fill
+              sizes="(min-width: 1024px) 33vw, 100vw"
               className="object-cover brightness-[0.88] contrast-[1.05] saturate-[0.9]"
             />
             <div className="absolute inset-0 bg-black/20" />
