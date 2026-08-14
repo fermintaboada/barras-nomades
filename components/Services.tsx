@@ -9,8 +9,8 @@ export default function Services() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[56px_1fr_420px] gap-10">
         <SectionLabel>El servicio</SectionLabel>
 
-        <div className="lg:pr-14">
-          <FadeIn from="up">
+        <div className="lg:pr-14 lg:flex lg:flex-col lg:h-full">
+          <FadeIn from="up" className="lg:flex-shrink-0">
             <h2 className="font-display text-4xl sm:text-5xl text-brand-cream mb-12 lg:mb-16 leading-[1.08] max-w-[520px]">
               Todo lo que necesitás,
               <br />
@@ -18,7 +18,11 @@ export default function Services() {
             </h2>
           </FadeIn>
 
-          <FadeIn from="up" delay={100} className="pt-6 border-t border-white/[0.08]">
+          <FadeIn
+            from="up"
+            delay={100}
+            className="pt-6 border-t border-white/[0.08] lg:flex-1 lg:flex lg:flex-col lg:min-h-0"
+          >
             <ServiceShowcase />
           </FadeIn>
         </div>

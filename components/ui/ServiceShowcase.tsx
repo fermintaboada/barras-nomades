@@ -42,8 +42,12 @@ export default function ServiceShowcase() {
   }
 
   return (
-    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      <div role="tablist" aria-label="Qué incluye el servicio" className="flex gap-1.5 sm:gap-2 mb-10">
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="lg:h-full lg:flex lg:flex-col"
+    >
+      <div role="tablist" aria-label="Qué incluye el servicio" className="flex gap-1.5 sm:gap-2 mb-10 lg:flex-shrink-0">
         {SERVICES.map((service, i) => (
           <button
             key={service}
@@ -73,26 +77,30 @@ export default function ServiceShowcase() {
         ))}
       </div>
 
-      <div className="grid">
-        {SERVICES.map((service, i) => (
-          <p
-            key={service}
-            id={`service-panel-${i}`}
-            role="tabpanel"
-            aria-hidden={i !== active}
-            className="[grid-area:1/1] transition-[opacity,filter] duration-300 ease-[var(--ease-out)]"
-            style={{
-              opacity: i === active ? 1 : 0,
-              filter: i === active ? 'blur(0px)' : 'blur(6px)',
-              pointerEvents: i === active ? 'auto' : 'none',
-            }}
-          >
-            <span className="font-display italic text-lg text-brand-orange/60 mr-3">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span className="text-[17px] sm:text-lg text-brand-cream/90 leading-relaxed">{service}</span>
-          </p>
-        ))}
+      <div className="relative lg:flex-1 lg:flex lg:items-center lg:min-h-0">
+        <div className="grid w-full">
+          {SERVICES.map((service, i) => (
+            <div
+              key={service}
+              id={`service-panel-${i}`}
+              role="tabpanel"
+              aria-hidden={i !== active}
+              className="[grid-area:1/1] transition-[opacity,filter] duration-300 ease-[var(--ease-out)]"
+              style={{
+                opacity: i === active ? 1 : 0,
+                filter: i === active ? 'blur(0px)' : 'blur(6px)',
+                pointerEvents: i === active ? 'auto' : 'none',
+              }}
+            >
+              <span className="block font-display italic text-brand-orange/25 text-7xl sm:text-8xl lg:text-9xl leading-none mb-3 lg:mb-5 select-none">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-brand-cream leading-[1.2] max-w-lg">
+                {service}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
