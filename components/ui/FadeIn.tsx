@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { usePrefersReducedMotion } from '@/components/ui/usePrefersReducedMotion'
 
 type Props = {
   children: React.ReactNode
@@ -17,6 +18,7 @@ const transforms: Record<NonNullable<Props['from']>, string> = {
 
 export default function FadeIn({ children, className = '', from = 'up', delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
+  const reducedMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     const el = ref.current
@@ -25,7 +27,7 @@ export default function FadeIn({ children, className = '', from = 'up', delay = 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.transitionDelay = `${delay}ms`
+          el.style.transitionDelay = `${reducedMotion ? 0 : delay}ms`
           el.classList.add('is-visible')
           observer.disconnect()
         }
@@ -35,15 +37,17 @@ export default function FadeIn({ children, className = '', from = 'up', delay = 
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [delay])
+  }, [delay, reducedMotion])
 
   return (
     <div
       ref={ref}
       style={{
         opacity: 0,
-        transform: transforms[from ?? 'up'],
-        transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
+        transform: reducedMotion ? 'none' : transforms[from ?? 'up'],
+        transition: reducedMotion
+          ? 'opacity 0.3s var(--ease-out)'
+          : 'opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out)',
       }}
       className={className}
     >

@@ -31,14 +31,14 @@ export default function Gallery() {
                 key={src}
                 from="fade"
                 delay={i * 80}
-                className={`relative aspect-square lg:aspect-auto overflow-hidden ${placement[i] ?? ''}`}
+                className={`group relative aspect-square lg:aspect-auto overflow-hidden ${placement[i] ?? ''}`}
               >
                 <Image
                   src={src}
                   alt={`Barras Nómades — foto ${i + 1}`}
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover [filter:sepia(0.12)_saturate(1.1)_brightness(0.85)_contrast(1.05)]"
+                  className="object-cover [filter:sepia(0.12)_saturate(1.1)_brightness(0.85)_contrast(1.05)] transition-transform duration-500 ease-[var(--ease-in-out)] pointer-fine:group-hover:scale-[1.04]"
                 />
               </FadeIn>
             ))}

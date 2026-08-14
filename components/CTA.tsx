@@ -21,7 +21,7 @@ export default function CTA() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white text-base font-medium px-8 py-[18px] rounded-[3px] whitespace-nowrap transition-all hover:scale-[1.02] active:scale-95"
+            className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white text-base font-medium px-8 py-[18px] rounded-[3px] whitespace-nowrap transition-[background-color,transform] duration-150 ease-[var(--ease-out)] pointer-fine:hover:scale-[1.02] active:scale-[0.97]"
           >
             <WhatsAppIcon />
             Escribinos por WhatsApp
@@ -32,7 +32,7 @@ export default function CTA() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-brand-cream/60 hover:text-brand-orange transition-colors"
+              className="text-sm text-brand-cream/60 hover:text-brand-orange transition-colors duration-200 ease-[var(--ease-out)]"
             >
               {INSTAGRAM_HANDLE}
             </a>

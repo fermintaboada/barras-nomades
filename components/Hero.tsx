@@ -46,7 +46,7 @@ export default function Hero() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white text-[15px] font-medium px-7 py-4 rounded-[3px] whitespace-nowrap transition-all hover:scale-[1.02] active:scale-95"
+              className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white text-[15px] font-medium px-7 py-4 rounded-[3px] whitespace-nowrap transition-[background-color,transform] duration-150 ease-[var(--ease-out)] pointer-fine:hover:scale-[1.02] active:scale-[0.97]"
             >
               <WhatsAppIcon size={17} />
               Consultanos por WhatsApp

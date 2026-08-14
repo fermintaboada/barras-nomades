@@ -24,7 +24,7 @@ export default function Upgrades() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-sm font-medium px-6 py-3.5 rounded-[3px] transition-all"
+            className="inline-flex items-center gap-2.5 border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-sm font-medium px-6 py-3.5 rounded-[3px] transition-[background-color,color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.97]"
           >
             <WhatsAppIcon size={15} />
             Consultanos por tu carta

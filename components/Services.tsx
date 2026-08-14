@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { SERVICES } from '@/lib/constants'
 import FadeIn from '@/components/ui/FadeIn'
 import SectionLabel from '@/components/ui/SectionLabel'
+import ServiceShowcase from '@/components/ui/ServiceShowcase'
 
 export default function Services() {
   return (
@@ -18,23 +18,9 @@ export default function Services() {
             </h2>
           </FadeIn>
 
-          <div className="flex flex-col">
-            {SERVICES.map((service, i) => (
-              <FadeIn
-                key={service}
-                from="up"
-                delay={i * 90}
-                className="grid grid-cols-[48px_1fr] items-baseline py-5 border-t border-white/[0.08] last:border-b"
-              >
-                <span className="font-display italic text-lg text-brand-orange/55">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="text-[17px] sm:text-lg text-brand-cream/90 max-w-[420px] leading-relaxed">
-                  {service}
-                </span>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn from="up" delay={100} className="pt-6 border-t border-white/[0.08]">
+            <ServiceShowcase />
+          </FadeIn>
         </div>
 
         <FadeIn from="right" delay={150} className="relative pt-2 lg:pt-10">

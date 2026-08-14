@@ -16,6 +16,12 @@
   --color-surface-2:    #1E1E1E;
 }
 
+:root {
+  /* Stronger, more intentional easing than the CSS built-ins */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -31,6 +37,7 @@ body {
 .is-visible {
   opacity: 1 !important;
   transform: none !important;
+  filter: none !important;
 }
 
 /* ── Hero entrance (CSS-only, no JS needed) ─────────────────── */
@@ -40,5 +47,11 @@ body {
 }
 
 .hero-anim {
-  animation: hero-in 0.9s ease-out both;
+  animation: hero-in 0.8s var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim {
+    animation-duration: 0.01ms !important;
+  }
 }
