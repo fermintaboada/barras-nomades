@@ -5,6 +5,7 @@
   /* To swap fonts: change which CSS var these point to in layout.tsx */
   --font-display: var(--font-playfair);
   --font-body:    var(--font-inter);
+  --font-mono:    var(--font-courier);
 
   /* Brand palette */
   --color-brand-blue:   #1E8FD5;
@@ -54,4 +55,10 @@ body {
   .hero-anim {
     animation-duration: 0.01ms !important;
   }
+}
+
+/* ── Typewriter cursor (Services showcase) ───────────────────── */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }

@@ -1,20 +1,26 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SERVICES } from '@/lib/constants'
 import { usePrefersReducedMotion } from '@/components/ui/usePrefersReducedMotion'
 
-const DURATION_MS = 4200
-const TICK_MS = 30
+const TYPE_MS = 42
+const TYPE_JITTER_MS = 22
+const DELETE_MS = 24
+const PAUSE_MS = 1400
+const NEXT_BEAT_MS = 300
+
+type Phase = 'typing' | 'deleting'
 
 export default function ServiceShowcase() {
   const [active, setActive] = useState(0)
-  const [progress, setProgress] = useState(0)
+  const [charCount, setCharCount] = useState(0)
+  const [phase, setPhase] = useState<Phase>('typing')
   const [hovered, setHovered] = useState(false)
   const [tabHidden, setTabHidden] = useState(false)
   const reducedMotion = usePrefersReducedMotion()
-  const elapsedRef = useRef(0)
 
-  const paused = hovered || tabHidden || reducedMotion
+  const paused = hovered || tabHidden
+  const currentText = SERVICES[active]
 
   useEffect(() => {
     const onVisibility = () => setTabHidden(document.hidden)
@@ -23,23 +29,36 @@ export default function ServiceShowcase() {
   }, [])
 
   useEffect(() => {
-    if (paused) return
-    const id = setInterval(() => {
-      elapsedRef.current += TICK_MS
-      if (elapsedRef.current >= DURATION_MS) {
-        elapsedRef.current = 0
-        setActive((a) => (a + 1) % SERVICES.length)
+    if (reducedMotion || paused) return
+
+    if (phase === 'typing') {
+      if (charCount < currentText.length) {
+        const delay = TYPE_MS + Math.random() * TYPE_JITTER_MS
+        const id = setTimeout(() => setCharCount((c) => c + 1), delay)
+        return () => clearTimeout(id)
       }
-      setProgress(Math.min(100, (elapsedRef.current / DURATION_MS) * 100))
-    }, TICK_MS)
-    return () => clearInterval(id)
-  }, [paused])
+      const id = setTimeout(() => setPhase('deleting'), PAUSE_MS)
+      return () => clearTimeout(id)
+    }
+
+    if (charCount > 0) {
+      const id = setTimeout(() => setCharCount((c) => c - 1), DELETE_MS)
+      return () => clearTimeout(id)
+    }
+    const id = setTimeout(() => {
+      setActive((a) => (a + 1) % SERVICES.length)
+      setPhase('typing')
+    }, NEXT_BEAT_MS)
+    return () => clearTimeout(id)
+  }, [phase, charCount, paused, reducedMotion, currentText])
 
   const selectTab = (i: number) => {
-    elapsedRef.current = 0
-    setProgress(0)
     setActive(i)
+    setCharCount(0)
+    setPhase('typing')
   }
+
+  const displayed = reducedMotion ? currentText : currentText.slice(0, charCount)
 
   return (
     <div
@@ -54,7 +73,6 @@ export default function ServiceShowcase() {
             type="button"
             role="tab"
             aria-selected={i === active}
-            aria-controls={`service-panel-${i}`}
             onClick={() => selectTab(i)}
             className="group flex-1 text-left cursor-pointer"
           >
@@ -65,43 +83,34 @@ export default function ServiceShowcase() {
             >
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span className="block h-[2px] bg-white/10 overflow-hidden rounded-full">
-              {i === active && (
-                <span
-                  className="block h-full bg-brand-orange"
-                  style={{ width: `${reducedMotion ? 100 : progress}%` }}
-                />
-              )}
-            </span>
+            <span
+              className={`block h-[2px] rounded-full transition-colors duration-200 ease-[var(--ease-out)] ${
+                i === active ? 'bg-brand-orange' : 'bg-white/10'
+              }`}
+            />
           </button>
         ))}
       </div>
 
-      <div className="relative lg:flex-1 lg:flex lg:items-center lg:min-h-0">
-        <div className="grid w-full">
-          {SERVICES.map((service, i) => (
-            <div
-              key={service}
-              id={`service-panel-${i}`}
-              role="tabpanel"
-              aria-hidden={i !== active}
-              className="[grid-area:1/1] transition-[opacity,filter] duration-300 ease-[var(--ease-out)]"
-              style={{
-                opacity: i === active ? 1 : 0,
-                filter: i === active ? 'blur(0px)' : 'blur(6px)',
-                pointerEvents: i === active ? 'auto' : 'none',
-              }}
-            >
-              <span className="block font-display italic text-brand-orange/25 text-7xl sm:text-8xl lg:text-9xl leading-none mb-3 lg:mb-5 select-none">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-brand-cream leading-[1.2] max-w-lg">
-                {service}
-              </p>
-            </div>
-          ))}
+      <div className="relative lg:flex-1 lg:flex lg:items-center lg:min-h-0" aria-hidden="true">
+        <div className="w-full">
+          <span className="block font-display italic text-brand-orange/25 text-6xl sm:text-7xl lg:text-8xl leading-none mb-4 lg:mb-6 select-none">
+            {String(active + 1).padStart(2, '0')}
+          </span>
+          <p className="font-mono text-xl sm:text-2xl lg:text-3xl text-brand-cream leading-[1.35] max-w-xl min-h-[4.5em]">
+            {displayed}
+            {!reducedMotion && (
+              <span className="inline-block w-[0.5em] h-[0.85em] bg-brand-orange ml-1 align-middle animate-[blink_1s_step-end_infinite]" />
+            )}
+          </p>
         </div>
       </div>
+
+      <ul className="sr-only">
+        {SERVICES.map((service) => (
+          <li key={service}>{service}</li>
+        ))}
+      </ul>
     </div>
   )
 }
