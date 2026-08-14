@@ -4,75 +4,55 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-      {/* Background photo */}
-      <div className="absolute inset-0">
-        <Image
-          src="/nuevoHero.jpeg"
-          alt="Barras Nómades — bar de noche"
-          fill
-          className="object-cover brightness-[0.6] contrast-[1.05] saturate-[0.85]"
-          priority
-        />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40" />
-        {/* Gradient fade to brand-dark at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-brand-dark" />
-        {/* Radial dark stage behind text */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.55) 0%, transparent 70%)',
-          }}
-        />
-      </div>
+    <section className="relative h-[86svh] lg:h-[960px] overflow-hidden">
+      <Image
+        src="/nuevoHero.jpeg"
+        alt="Barras Nómades — bar de noche"
+        fill
+        sizes="100vw"
+        className="object-cover object-[60%_40%] [filter:sepia(0.18)_saturate(1.15)_brightness(0.72)_contrast(1.08)]"
+        priority
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(15,10,6,0.88)_0%,rgba(20,12,6,0.55)_32%,rgba(20,12,6,0.15)_55%,transparent_72%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,#0F0F0F_0%,rgba(15,15,15,0.05)_30%,transparent_55%)]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24">
-        <p
-          className="hero-anim text-brand-blue text-xs font-body tracking-[0.3em] uppercase mb-8 [text-shadow:0_1px_12px_rgba(0,0,0,0.9)]"
-          style={{ animationDelay: '100ms' }}
-        >
-          Servicio profesional de barra
-        </p>
-
-        <h1
-          className="hero-anim font-display text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none mb-6 [text-shadow:0_2px_24px_rgba(0,0,0,0.9)]"
-          style={{ animationDelay: '300ms' }}
-        >
-          Barras Nómades
-        </h1>
-
-        <div
-          className="hero-anim w-16 h-px bg-brand-orange mx-auto mb-8"
-          style={{ animationDelay: '500ms' }}
-        />
-
-        <p
-          className="hero-anim font-body text-lg sm:text-xl text-brand-cream max-w-lg mx-auto mb-12 [text-shadow:0_1px_16px_rgba(0,0,0,0.9)]"
-          style={{ animationDelay: '650ms' }}
-        >
-          20 años llevando el bar perfecto a tu evento
-        </p>
-
-        <div className="hero-anim" style={{ animationDelay: '850ms' }}>
-          <a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white font-body font-medium text-base px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95"
-          >
-            <WhatsAppIcon />
-            Consultanos por WhatsApp
-          </a>
+      <div className="hero-anim absolute top-6 right-6 lg:top-20 lg:right-24 rotate-[-4deg] text-center z-[3]" style={{ animationDelay: '850ms' }}>
+        <div className="border border-brand-cream/35 rounded-sm px-4 py-3 lg:px-5 lg:py-3.5 font-display italic text-xs lg:text-sm text-brand-cream/75 leading-relaxed">
+          20 años<br />de oficio familiar
         </div>
       </div>
 
-      {/* Scroll indicator — decorative */}
-      <div aria-hidden="true" className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-        <span className="font-body text-xs tracking-widest uppercase text-brand-cream">
-          Scroll
-        </span>
-        <div className="w-px h-8 bg-brand-cream animate-pulse" />
+      <div className="absolute inset-x-0 bottom-0 z-[3]">
+        <div className="px-6 lg:px-[60px] pb-14 lg:pb-20 max-w-[980px]">
+          <h1
+            className="hero-anim font-display font-semibold text-[15vw] leading-[0.86] sm:text-8xl lg:text-9xl xl:text-[150px] 2xl:text-[186px] text-white tracking-tight [text-shadow:0_4px_50px_rgba(0,0,0,0.65)]"
+            style={{ animationDelay: '150ms' }}
+          >
+            Barras<br />Nómades
+          </h1>
+
+          <div
+            className="hero-anim flex items-center gap-6 mt-9 pl-1.5"
+            style={{ animationDelay: '400ms' }}
+          >
+            <div className="w-px h-14 bg-brand-orange flex-shrink-0" />
+            <p className="text-lg text-brand-cream/90 max-w-[360px] leading-relaxed">
+              20 años llevando el bar perfecto a tu evento
+            </p>
+          </div>
+
+          <div className="hero-anim mt-11 lg:ml-[30px]" style={{ animationDelay: '650ms' }}>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange/90 text-white text-[15px] font-medium px-7 py-4 rounded-[3px] whitespace-nowrap transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <WhatsAppIcon size={17} />
+              Consultanos por WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )

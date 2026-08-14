@@ -7,6 +7,7 @@ import Drinks from '@/components/Drinks'
 import Upgrades from '@/components/Upgrades'
 import Gallery from '@/components/Gallery'
 import CTA from '@/components/CTA'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Gallery />
         <CTA />
       </main>
+      <Footer />
     </>
   )
 }

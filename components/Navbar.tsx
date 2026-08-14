@@ -3,20 +3,35 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon'
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-sm border-b border-white/5">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-display text-2xl tracking-wide">
+    <header className="sticky top-0 z-50 bg-brand-dark border-b border-white/[0.06]">
+      <div className="max-w-6xl mx-auto h-20 lg:h-[88px] flex items-center justify-between px-6 lg:px-[60px]">
+        <span className="font-display text-xl tracking-wide">
           <span className="text-brand-cream">Barras </span>
-          <span className="text-brand-orange">Nómades</span>
+          <span className="text-brand-orange italic">Nómades</span>
         </span>
+
+        <nav className="hidden md:flex items-center gap-9">
+          <a href="#nosotros" className="text-brand-cream/70 hover:text-brand-orange text-sm transition-colors">
+            Nosotros
+          </a>
+          <a href="#servicios" className="text-brand-cream/70 hover:text-brand-orange text-sm transition-colors">
+            Servicios
+          </a>
+          <a href="#carta" className="text-brand-cream/70 hover:text-brand-orange text-sm transition-colors">
+            Carta
+          </a>
+          <a href="#galeria" className="text-brand-cream/70 hover:text-brand-orange text-sm transition-colors">
+            Galería
+          </a>
+        </nav>
 
         <a
           href={WHATSAPP_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-brand-orange hover:bg-brand-orange/90 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
+          className="flex items-center gap-2 bg-brand-orange hover:bg-brand-orange/90 text-white text-sm font-medium px-5 py-[11px] rounded-[3px] transition-colors"
         >
-          <WhatsAppIcon size={16} />
+          <WhatsAppIcon size={14} />
           Consultanos
         </a>
       </div>
