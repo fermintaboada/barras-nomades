@@ -40,6 +40,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Félix Taboada' }],
   robots: { index: true, follow: true },
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
